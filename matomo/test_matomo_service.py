@@ -8,6 +8,7 @@ TIMEFRAME = [
     ("manual", ("2022-07-01", "2022-07-15")),
 ]
 
+
 @pytest.fixture(
     params=[i[1] for i in TIMEFRAME],
     ids=[i[0] for i in TIMEFRAME],
