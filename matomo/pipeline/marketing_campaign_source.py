@@ -12,7 +12,10 @@ def parse_date(date_str: str):
 
 def split_goal_id(goal: str):
     key, value = goal.split("=")
-    return {key: value}
+    return {key: int(value)}
+
+def round_data(data: dict[str, float]):
+    return {key: round(value, 6) for key, value in data.items()}
 
 
 def transform(res: dict[str, Any]):
@@ -28,7 +31,7 @@ def transform(res: dict[str, Any]):
         {
             **row,
             "goals": [
-                {**value, **split_goal_id(key)}
+                {**round_data(value), **split_goal_id(key)}
                 for key, value in row.get("goals", {}).items()
             ],
         }

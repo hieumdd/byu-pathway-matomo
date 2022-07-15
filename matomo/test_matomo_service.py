@@ -5,7 +5,7 @@ from matomo import matomo_service
 
 TIMEFRAME = [
     ("auto", (None, None)),
-    ("manual", ("2022-07-01", "2022-07-15")),
+    ("manual", ("2022-01-01", "2022-07-15")),
 ]
 
 
@@ -27,7 +27,7 @@ class TestMatomo:
 
     def test_service(self, pipeline, timeframe):
         res = matomo_service.pipeline_service(pipeline, *timeframe)
-        assert res >= 0
+        assert res["output_rows"] >= 0
 
 
 class TestTasks:
