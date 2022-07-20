@@ -5,7 +5,7 @@ from matomo import matomo_service
 
 TIMEFRAME = [
     ("auto", (None, None)),
-    ("manual", ("2022-01-01", "2022-07-15")),
+    ("manual", ("2020-01-01", "2022-07-15")),
 ]
 
 

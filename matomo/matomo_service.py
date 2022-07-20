@@ -19,7 +19,7 @@ def pipeline_service(
     start = (date.today() - timedelta(days=7)).isoformat() if not start else start
     return compose(
         lambda x: {"output_rows": x},
-        bigquery.load(pipeline.name, pipeline.schema),
+        bigquery.load(pipeline.name, pipeline.schema, pipeline.write_dispotition, pipeline.time_partitioning),
         pipeline.transform,
         get(pipeline.get_options),
     )((1, start, end))

@@ -1,5 +1,10 @@
 from typing import Any
 
+from google.cloud.bigquery import (
+    WriteDisposition,
+    TimePartitioning,
+    TimePartitioningType,
+)
 import dateparser
 
 from matomo.pipeline.interface import Pipeline
@@ -13,6 +18,7 @@ def parse_date(date_str: str):
 def split_goal_id(goal: str):
     key, value = goal.split("=")
     return {key: int(value)}
+
 
 def round_data(data: dict[str, float]):
     return {key: round(value, 6) for key, value in data.items()}
@@ -82,4 +88,9 @@ pipeline = Pipeline(
         {"name": "bounce_rate", "type": "STRING"},
         {"name": "date", "type": "DATE"},
     ],
+    write_dispotition=WriteDisposition.WRITE_APPEND,
+    time_partitioning=TimePartitioning(
+        type_=TimePartitioningType.DAY,
+        field="date",
+    ),
 )
