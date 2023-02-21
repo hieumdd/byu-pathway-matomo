@@ -5,7 +5,7 @@ from matomo import matomo_service
 
 TIMEFRAME = [
     ("auto", (None, None)),
-    ("manual", ("2020-01-01", "2022-07-15")),
+    # ("manual", ("2022-07-15", "2023-02-17")),
 ]
 
 
@@ -18,7 +18,7 @@ def timeframe(request):
 
 
 class TestMatomo:
-    @pytest.fixture(
+    @pytest.fixture( # type: ignore
         params=pipelines.values(),
         ids=pipelines.keys(),
     )

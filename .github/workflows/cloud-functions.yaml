@@ -14,7 +14,7 @@ env:
   GCP_SA: etl-95@byu-pathway-power-bi-report.iam.gserviceaccount.com
 
   FUNCTION_NAME: byu-pathway-matomo-${{ github.ref_name }}
-  PUBLIC_URL: https://us-central1-charge-bee.cloudfunctions.net/byu-pathway-matomo-${{ github.ref_name }}
+  PUBLIC_URL: https://us-central1-byu-pathway-power-bi-report.cloudfunctions.net/byu-pathway-matomo-${{ github.ref_name }}
 
 jobs:
   deploy:
